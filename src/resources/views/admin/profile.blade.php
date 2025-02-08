@@ -33,7 +33,6 @@
             <a href="{{ route('admin.dashboard') }}" class="menu-item">Dashboard</a>
             <a href="{{ route('admin.profile') }}" class="menu-item">Data Ibtitah</a>
             <a href="{{ route('admin.upload') }}" class="menu-item">Add Data Ibtitah</a>
-            <a href="{{ route('admin.search.result') }}" class="menu-item">Cari Mahasiswa</a>
         </div>
         <div>
             <a href="{{ route('landing') }}"class="menu-item"><i class="fa fa-sign-out-alt"></i> Log Out</a>

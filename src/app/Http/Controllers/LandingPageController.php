@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Helpers\NimHelper;
 use App\Helpers\SemesterHelper;
 use App\Jobs\ProcessNimValidation;
-use App\Jobs\ProcessKerjaPraktik;
-use App\Jobs\ProcessKerjaPraktikBaru;
+use App\Jobs\CalculateKPCount;
 use App\Jobs\CalculateIbtitahCount;
 use App\Jobs\CalculateSidangCount;
 use Illuminate\Support\Facades\DB;
@@ -97,7 +96,7 @@ class LandingPageController extends Controller
                 'nim' => $nim->nim,
             ];
         
-            ProcessKerjaPraktikBaru::dispatch($nim->nim)->onQueue('kp1');
+            CalculateKPCount::dispatch($nim->nim)->onQueue('kp_count');
             
         }
 

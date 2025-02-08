@@ -1,2 +1,4 @@
 postgresql/data/base/16384/* filter=lfs diff=lfs merge=lfs -text
 postgresql/data/base/16384/16438 filter=lfs diff=lfs merge=lfs -text
+postgresql/data/* filter=lfs diff=lfs merge=lfs -text
+postgresql/data/base/* filter=lfs diff=lfs merge=lfs -text
