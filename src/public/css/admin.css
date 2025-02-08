@@ -1,0 +1,524 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .menu-text .line2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .text-text {
+    margin-left: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(57, 60, 77, 1);
+}
+
+.header .profile {
+    margin-right: 20px;
+}
+
+.header .profile i {
+    font-size: 35px;
+}
+
+/* Sidebar */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 72px); /* Sisakan tinggi untuk header */
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    overflow-y: auto; /* Pastikan sidebar bisa di-scroll */
+    transition: transform 0.3s ease-in-out; /* Tambahkan transisi untuk sembunyikan sidebar */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Geser sidebar ke luar layar */
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #394D4D;
+    transition: background 0.3s;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #FFF574;
+}
+
+.sidebar .menu-item i {
+    margin-right: 10px;
+}
+
+/* Container */
+.container {
+    margin-left: 260px;
+    margin-top: 100px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.container.expanded {
+    margin-left: 20px; /* Dashboard melebar ketika sidebar disembunyikan */
+}
+
+.container h1 {
+    text-align: center;
+    color: #000;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.search-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 14px;
+    width: 250px;
+    border: 2px solid #FFD523;
+    border-radius: 25px;
+    background-color: #fff;
+    margin-right: 10px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    border-color: #FFC107;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.8);
+}
+
+.search-button {
+    padding: 5px 15px;
+    background-color: #FFD523;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #FFC107;
+}
+
+.search-button:focus {
+    outline: none;
+}
+
+.search-button i {
+    font-size: 18px;
+}
+
+ .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .pagination-list li {
+            margin: 0 5px;
+        }
+
+        .pagination-list li a {
+            text-decoration: none;
+            color: #FFD523;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #FFD523;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination-list li.active a {
+            background-color: #FFD523;
+            color: #fff;
+        }
+
+        .pagination-list li a:hover {
+            background-color: #FFC107;
+            color: #fff;
+        }
+
+        .pagination-list li.disabled span {
+            color: #ccc;
+        }
+
+        /* Sort options styling */
+        .sort-options {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .sort-options select {
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #FFD523;
+        }
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #DDD;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: #FFD700;
+    color: #000;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    background-color: #FFC107;
+}
+
+.btn-view {
+    font-weight: bold;
+    color: #FFC107;
+    text-decoration: underline;
+}
+
+.btn-view:hover {
+    color: #000;
+}
+
+.btn-action {
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-approve {
+    background-color: #FFC107;
+    color: #FFF;
+}
+
+.btn-approve:hover {
+    background-color: #FFD700;
+}
+
+.btn-reject {
+    background-color: #DC3545;
+    color: #FFF;
+}
+
+.btn-reject:hover {
+    background-color: #C82333;
+}
+
+.btn-delete {
+    background-color: #6C757D;
+    color: #FFF;
+}
+
+.btn-delete:hover {
+    background-color: #5A6268;
+}
+
+/* Footer */
+.footer {
+    width: calc(100% - 240px);
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 240px;
+    margin-top: auto;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.footer.expanded {
+    width: 100%;
+    margin-left: 0; /* Footer melebar ketika sidebar disembunyikan */
+}
+
+/* Sembunyikan detail awalnya */
+
+
+/* Sembunyikan beberapa kolom di tampilan mobile */
+/* RESPONSIVE TABLE UNTUK HANDPHONE */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        display: table;
+        overflow-x: auto;
+    }
+
+    thead {
+        display: table-header-group; /* Tetap tampil */
+    }
+
+    tbody {
+        display: table-row-group;
+        width: 100%;
+    }
+
+    tr {
+        display: table-row; /* Pastikan tetap berbentuk tabel */
+    }
+
+    td, th {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    /* Hilangkan elemen yang tidak perlu di mobile */
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: table-cell; /* Tampilkan tombol Detail */
+    }
+
+    /* Pastikan details-row tetap tersembunyi hingga diklik */
+    .details-row {
+        display: none;
+        background: #f8f8f8;
+    }
+
+    .details-row.show {
+        display: table-row;
+    }
+
+    /* Tombol Detail */
+    .toggle-details {
+        background: #FFD523;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .toggle-details:hover {
+        background: #FFC107;
+    }
+
+    .header .logo img {
+        display: none;
+    }
+
+.header .menu-text .line1 {
+    display: none;
+}
+
+.header .menu-text .line2 {
+    display: none;
+}
+
+    .search-input {
+    width: 150px;
+}
+    .container h1 {
+    font-size: 25px;
+}
+
+      /* Sort options styling */
+
+        .sort-options select {
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #FFD523;
+        }
+    
+    .sort-options label {
+        font-size: 15px; /* Larger font size on mobile */
+    }
+
+    .sort-options select option {
+        font-size: 12px;
+    }
+.container {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+    .sidebar {
+     transform: translateX(-100%);
+    width: 180px;
+     /* Sisakan tinggi untuk header */
+}
+
+     .sidebar.hidden {
+         transform: translateX(0); /* Reveal the sidebar */
+     }
+
+    .footer{
+        margin-left: 0px;
+        width: 100%;
+    }
+}
+
+/* Sembunyikan kolom Detail di Desktop */
+@media (min-width: 769px) {
+    .desktop-hide {
+        display: none !important;
+    }
+}
+
+
+
+/* Awalnya detail tersembunyi */
+.details-row {
+    display: none; 
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Saat detail ditampilkan */
+.details-row.show {
+    display: table-row;
+    visibility: visible;
+}
+
+
+.details-content {
+    background: #F8F8F8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+/* Buat tombol Detail lebih menarik */
+.toggle-details {
+    background: #FFD523;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-details:hover {
+    background: #FFC107;
+}

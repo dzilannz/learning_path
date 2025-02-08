@@ -1,0 +1,388 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Membuat struktur kolom */
+    min-height: 100vh; /* Pastikan seluruh halaman mencakup tinggi layar */
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+    overflow-y: auto; /* Memastikan scroll vertikal bekerja */
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .menu-text .line2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .text-text {
+    margin-left: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(57, 60, 77, 1);
+}
+
+.header .profile {
+    margin-right: 20px;
+}
+
+.header .profile i {
+    font-size: 35px;
+}
+
+/* Form pencarian di header */
+.search-form {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 5px 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form input {
+    padding: 8px;
+    border: 2px solid #FFF574;
+    border-radius: 15px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 6px 12px;
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #ff9900;
+}
+
+.search-form input:focus, .search-form button:focus {
+    outline: none;
+}
+
+/* Tombol toggle */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 72px); /* Sisakan tinggi untuk header */
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    overflow-y: auto; /* Pastikan sidebar bisa di-scroll */
+    transition: transform 0.3s ease-in-out; /* Tambahkan transisi untuk sembunyikan sidebar */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Geser sidebar ke luar layar */
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #394D4D;
+    transition: background 0.3s;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #FFF574;
+}
+
+.sidebar .menu-item i {
+    margin-right: 10px;
+}
+
+/* Menambahkan styling untuk form pencarian */
+
+
+/* Dashboard Container */
+.dashboard {
+    margin-left: 240px; /* Beri ruang untuk sidebar */
+    margin-top: 100px; /* Beri ruang untuk header */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1; /* Izinkan dashboard untuk tumbuh */
+    transition: margin-left 0.3s ease-in-out; /* Animasi saat sidebar disembunyikan */
+}
+
+.dashboard.expanded {
+    margin-left: 0; /* Dashboard melebar ketika sidebar disembunyikan */
+}
+
+
+/* Cards */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Empat kolom */
+    gap: 20px;
+}
+
+.stats-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 150px; /* Tinggi konsisten untuk kartu */
+}
+
+.stats-card h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stats-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Charts */
+/* Adjusting filter container and chart layout */
+.filter-container {
+    width: 100%;
+    margin-bottom: 10px;  /* Adds space below the filter */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#angkatanFilter {
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #fff574;
+    background-color: #fff;
+}
+
+/* Adjusting chart section to have charts side-by-side */
+.chart-section {
+    display: flex;
+    flex-wrap: wrap;  /* Allow wrapping on small screens */
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.chart-container {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 30%; /* Flex 1 1 30% ensures charts take up 30% of the width */
+    min-width: 250px; /* Ensure the charts don't get too small */
+}
+
+.large-chart {
+    flex: 2; /* Larger chart takes more space */
+}
+
+.small-chart {
+    flex: 1; /* Smaller charts take up less space */
+}
+
+.footer {
+    width: calc(100% - 240px); /* Kurangi lebar sidebar */
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 240px; /* Beri ruang untuk sidebar */
+    margin-top: auto; /* Taruh footer di bawah */
+}
+
+.footer.expanded {
+    width: 100%;
+    margin-left: 0; /* Footer melebar ketika sidebar disembunyikan */
+}
+
+
+@media (max-width: 480px) {
+  .header .logo img {
+       display: none;
+    }
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    display: none;
+}
+
+.header .menu-text .line2 {
+  display: none;
+}
+
+.header .text-text {
+    margin-left: 20px;
+    font-size: 20px; 
+}
+
+
+
+    .stats-section{
+    grid-template-columns: repeat(2, 2fr);
+        gap: 15px;
+    }
+
+    .stats-card {
+    padding: 25px;
+    height: 130px; /* Tinggi konsisten untuk kartu */
+}
+    .stats-card h3 {
+    font-size: 14px;
+}
+
+.stats-card p {
+    font-size: 22px;
+}
+
+   
+
+.chart-container {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 60%; /* Gunakan 90% dari lebar layar */
+    max-width: 60%; /* Batasi ukuran maksimum */
+}
+
+    .large-chart {
+    flex: 2;
+    width: 75%;
+    max-width: 100%;/* Take more space for the bar chart */
+}
+
+.small-chart {
+    margin-left: 60px;
+    flex: 1;
+}
+
+.chart-container h3 {
+    font-size: 14px;
+}
+
+.search-form {
+    top: 15px;
+right: 10px;
+    box-shadow: none;
+}
+
+.search-form input {
+width: 120px;
+margin-right: 5px;
+}
+
+.search-form button {
+padding: 6px 10px;
+}
+
+    .dashboard {
+    margin-left: 0px; /* Beri ruang untuk sidebar */
+}
+
+.sidebar {
+     transform: translateX(-100%);
+    width: 180px;
+     /* Sisakan tinggi untuk header */
+}
+
+     .sidebar.hidden {
+         transform: translateX(0); /* Reveal the sidebar */
+     }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        width: 100%;
+        margin-left: 0;
+    }
+}

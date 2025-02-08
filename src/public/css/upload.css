@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .menu-text .line2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .text-text {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(57, 60, 77, 1);
+    white-space: nowrap;
+}
+
+.header .profile {
+    margin-right: 20px;
+}
+
+.header .profile i {
+    font-size: 35px;
+}
+
+.fa-bars::before {
+    color: #000 !important; /* Warna hitam */
+}
+
+/* Tambahkan warna untuk state hover jika dibutuhkan */
+.fa-bars:hover::before {
+    color: #333 !important; /* Warna gelap saat hover */
+}
+
+/* Sidebar */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 72px); /* Sisakan tinggi untuk header */
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    overflow-y: auto; /* Pastikan sidebar bisa di-scroll */
+    transition: transform 0.3s ease-in-out; /* Tambahkan transisi untuk sembunyikan sidebar */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Geser sidebar ke luar layar */
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #394D4D;
+    transition: background 0.3s;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #FFF574;
+}
+
+.sidebar .menu-item i {
+    margin-right: 10px;
+}
+
+
+.container {
+    margin-left: 260px;
+    margin-top: 100px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.container.expanded {
+    margin-left: 20px; /* Dashboard melebar ketika sidebar disembunyikan */
+}
+
+.container h1 {
+    text-align: center;
+    color: #000;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.upload-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.upload-container h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+button {
+    width: 50%; /* Atur lebar tombol menjadi 50% */
+    padding: 10px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto; /* Agar tombol berada di tengah */
+    display: block; /* Untuk memastikan marginnya bekerja */
+}
+
+button:hover {
+    background-color: #FFC107;
+}
+
+
+.footer {
+    width: calc(100% - 240px); /* Kurangi lebar sidebar */
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 240px; /* Beri ruang untuk sidebar */
+    margin-top: auto; /* Taruh footer di bawah */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.footer.expanded {
+    width: 100%;
+    margin-left: 0; /* Footer melebar ketika sidebar disembunyikan */
+}
+
+@media (max-width: 480px) {
+    .header .logo img {
+       display: none;
+    }
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    display: none;
+}
+
+.header .menu-text .line2 {
+  display: none;
+}
+
+.header .text-text {
+    margin-left: 20px;
+    font-size: 20px; 
+}
+    .container {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+    .sidebar {
+     transform: translateX(-100%);
+    width: 180px;
+     /* Sisakan tinggi untuk header */
+}
+
+     .sidebar.hidden {
+         transform: translateX(0); /* Reveal the sidebar */
+     }
+
+    .footer{
+        margin-left: 0px;
+        width: 100%;
+    }
+}

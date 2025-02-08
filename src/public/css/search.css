@@ -1,0 +1,666 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%; /* Ensures full height */
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: auto; /* Enable horizontal scroll */
+    overflow-y: hidden;
+
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header .menu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.header .menu-text .line1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .menu-text .line2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.header .text-text {
+    margin-left: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(57, 60, 77, 1);
+}
+
+.header .profile {
+    margin-right: 20px;
+}
+
+.header .profile i {
+    font-size: 35px;
+}
+
+/* Form pencarian di header */
+.search-form {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 5px 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form input {
+    padding: 8px;
+    border: 2px solid #FFF574;
+    border-radius: 15px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 6px 12px;
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #ff9900;
+}
+
+.search-form input:focus, .search-form button:focus {
+    outline: none;
+}
+
+/* Tombol toggle */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 72px); /* Sisakan tinggi untuk header */
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 100;
+    overflow-y: auto; /* Pastikan sidebar bisa di-scroll */
+    transition: transform 0.3s ease-in-out; /* Tambahkan transisi untuk sembunyikan sidebar */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Geser sidebar ke luar layar */
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #394D4D;
+    transition: background 0.3s;
+}
+
+.sidebar .menu-item:hover {
+    background-color: #FFF574;
+}
+
+.sidebar .menu-item i {
+    margin-right: 10px;
+}
+
+.content {
+    margin-top: 6%;
+    padding: 20px;
+    margin-left: 20%;
+}
+
+.content h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.content .title {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Progress Section */
+.progress-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 80px;
+    margin-left: 20%;
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition */
+}
+
+.progress-section.expanded {
+    margin-left: 5%; /* Remove margin-left when sidebar is hidden */
+    width: 100%; /* Full width */
+}
+
+
+
+.progress-section .label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    min-width: 80px;
+}
+.progress-bar, .progress-bar-ibtitah, .progress-bar-sidang {
+    display: flex;
+    align-items: center;
+    flex: 2;
+}
+.progress-bar div, .progress-bar-ibtitah div, .progress-bar-sidang div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid #FFD523;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.progress-bar div.completed, .progress-bar-ibtitah div.completed, .progress-bar-sidang div.completed {
+    background-color: #FFD523;
+}
+.progress-bar div .label, .progress-bar-ibtitah div .label, .progress-bar-sidang div .label{
+    font-weight: lighter;
+    margin-top: 65px;
+    margin-left:30px;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+}
+.progress-bar div::after, .progress-bar-ibtitah div::after, .progress-bar-sidang div::after {
+    content: '';
+    width: 60px; /* Panjang garis hitam */
+    height: 3px;
+    background-color: #FFD523;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+    z-index: -1;
+}
+
+.progress-bar div:last-child::after, .progress-bar-ibtitah div:last-child::after, .progress-bar-sidang div:last-child::after {
+    width: 0 !important; /* Pastikan tidak ada garis untuk lingkaran terakhir */
+    height: 0 !important; /* Tambahan untuk benar-benar menghilangkan */
+}
+
+.circle {
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 150%; /* Tempatkan tooltip di bawah lingkaran */
+    left: 50%; /* Pusatkan horizontal */
+    transform: translateX(-50%); /* Pusatkan horizontal dengan margin lingkaran */
+    white-space: nowrap; /* Hindari teks terpotong */
+    width: auto; /* Biarkan lebar menyesuaikan konten */
+    min-width: 150px; /* Tambahkan ukuran minimum agar terlihat rapi */
+    outline: 3px solid #FFD523;
+}
+
+.circle:hover .tooltip {
+    visibility: visible; /* Tooltip terlihat saat hover */
+    opacity: 1; /* Pastikan tampil */
+    transition: opacity 0.2s ease-in-out; /* Tambahkan animasi */
+}
+
+/* Tooltip khusus Ibtitah */
+.tooltip_ibadah {
+    visibility: hidden;
+    background-color: #Fff; /* Warna kuning */
+    color: #333;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px 3px !important; /* Kurangi padding untuk memperkecil box */
+    position: absolute;
+    z-index: 1;
+    top: 150%; /* Tempatkan tooltip di bawah lingkaran */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10 px !important; /* Perkecil ukuran teks */
+    width: auto;
+    min-width: 80px !important; /* Kurangi ukuran minimum box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan lembut */
+    outline: 2px solid #FFD523;
+}
+
+
+
+/* Tampilkan tooltip saat hover */
+.ibtitah-circle:hover .tooltip_ibadah {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Ubah warna lingkaran saat diklik */
+.progress-bar .ibtitah-circle.clicked .tooltip_ibadah {
+    background-color: #FFD523; /* Ubah warna menjadi kuning */
+    border-color: #FFC107; /* Tambahkan warna border */
+}
+
+/* Tambahkan hover efek untuk lingkaran */
+.progress-bar .ibtitah-circle:hover .tooltip_ibadah {
+    background-color: #FFD523;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+
+ /* Modal styles */
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 350px;
+    text-align: center;
+    border-radius: 8px;
+}
+ .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.modal-content input[type="file"] {
+    border: 2px solid #FFD523;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #FFD523;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #FFC107;
+}
+
+/* Modal Notifikasi */
+#success-modal .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #FFD523;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+#success-modal .modal-content h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+#success-modal .modal-content button {
+    background-color: #FFD523;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#success-modal .modal-content button:hover {
+    background-color: #FFC107;
+}
+
+.progress-section .label a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease; /* Animasi transisi */
+}
+
+.progress-section .label a:hover {
+    color: #FFD523; /* Ubah warna teks saat hover */
+    text-decoration: underline; /* Garis bawah saat hover */
+}
+
+.progress-section .label a:visited {
+    color: #FFD523; /* Warna teks setelah link diklik */
+    text-decoration: none; /* Hilangkan garis bawah jika ada */
+}
+
+#history-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#history-section h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: left;
+    border-bottom: 2px solid #ffc107;
+    padding-bottom: 5px;
+}
+
+#history-section p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+#history-section p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+#history-section a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#history-section a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+.footer {
+    width: calc(100% - 240px); /* Kurangi lebar sidebar */
+    height: 72px;
+    background-color: #ffffff;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 240px; /* Beri ruang untuk sidebar */
+    margin-top: auto; /* Taruh footer di bawah */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.footer.expanded {
+    width: 100%;
+    margin-left: 0; /* Footer melebar ketika sidebar disembunyikan */
+}
+
+@media (max-width: 480px) {
+    .content {
+    margin-top: 20%;
+    padding: 20px;
+    margin-left: 10%;
+}
+
+.content h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.content .title {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+    .progress-section {
+        margin-left: 0%;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        flex-direction: column; /* Susun secara vertikal */
+        align-items: center; /* Posisikan elemen secara tengah */
+    }
+
+    .progress-section .label {
+        font-size: 18px;
+        margin-bottom: 10px; /* Berikan jarak antara label dan progress bar */
+        min-width: 0px;
+        text-align: center; /* Pastikan label berada di tengah */
+    }
+
+    .progress-bar, .progress-bar-ibtitah, .progress-bar-sidang {
+        display: flex;
+        justify-content: center; /* Tengah-kan progress bar */
+        align-items: center;
+        flex-direction: row; /* Susun lingkaran secara horizontal */
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
+    .progress-bar div {
+        width: 23px;
+        height: 23px;
+        border: 3px solid #FFD523;
+        margin-right: 17px; /* Jarak antar lingkaran */
+    }
+
+    .progress-bar-ibtitah div {
+        width: 23px;
+        height: 23px;
+    }
+
+    .progress-bar-sidang div {
+        width: 25px;
+       height: 25px;
+       border: 3px solid #FFD523;
+        margin-right: 50px;
+    }
+
+    .progress-bar div::after {
+        content: '';
+        width: 45px; /* Sesuaikan panjang garis penghubung */
+        height: 2px;
+        background-color: #FFD523;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 100%;
+        z-index: -1;
+    }
+
+    .progress-bar-ibtitah div::after {
+        content: '';
+        width: 60px; /* Adjust this length */
+        height: 3px;
+        background-color: #FFD523;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 80%;
+        z-index: -1;
+    }
+
+    .progress-bar-sidang div::after {
+        content: '';
+        width: 60px; /* Adjust this length */
+        height: 3px;
+        background-color: #FFD523;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 80%;
+        z-index: -1;
+    }
+    
+    .progress-bar div .label {
+        font-weight: lighter;
+        margin-top: 70px; 
+        margin-left: 10px;
+        margin-right: 0px;/* Berikan jarak antara lingkaran dan label */
+        font-size: 10px;
+        color: #000;
+    }
+
+    .progress-bar div:last-child::after {
+        width: 0 !important; /* Hapus garis penghubung untuk lingkaran terakhir */
+        height: 0 !important;
+    }
+
+    .header .logo img {
+   display: none;
+    }
+
+.header .menu-text .line1 {
+    display: none;
+}
+
+.header .menu-text .line2 {
+    display: none;
+}
+
+.header .text-text {
+     margin-left: 15px;
+    font-size: 18px;
+}
+
+    .search-form {
+        top: 15px;
+    right: 40px;
+        box-shadow: none;
+}
+
+.search-form input {
+    width: 100px;
+    margin-right: 5px;
+}
+
+.search-form button {
+    padding: 6px 10px;
+}
+    
+.sidebar {
+     transform: translateX(-100%);
+    width: 180px;
+     /* Sisakan tinggi untuk header */
+}
+
+     .sidebar.hidden {
+         transform: translateX(0); /* Reveal the sidebar */
+     }
+
+    .footer{
+        margin-left: 0px;
+        width: 100%;
+    }
+}
