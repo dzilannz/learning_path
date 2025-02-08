@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Web Server Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx1
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+      - db
+    volumes:
+      - ./src:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+
+  # Database Service
+  db:
+    image: postgres
+    container_name: pgsql
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment: 
+      POSTGRES_DB: pgsql
+      POSTGRES_USER: root 
+      POSTGRES_PASSWORD: password 
+
+  pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgAdmin1
+      ports:
+        - "5050:80"
+      depends_on:
+        - db 
+      environment:
+        PGADMIN_DEFAULT_EMAIL: 123@gmail.com
+        PGADMIN_DEFAULT_PASSWORD: password 
+
+  # Application Service
+  app:
+    container_name: tes1
+    build: 
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
