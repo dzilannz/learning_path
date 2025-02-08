@@ -162,6 +162,10 @@ body {
         padding: 15px;
     }
 
+    .login-left {
+    border-radius: 10px;
+}
+
     .login-left img {
         width: 80px;
     }
