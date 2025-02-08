@@ -137,6 +137,6 @@ class AuthController extends Controller
         $request->session()->forget('user');
 
         // Redirect ke halaman login
-        return redirect()->route('login.form');
+        return redirect()->route('landing');
     }
 }

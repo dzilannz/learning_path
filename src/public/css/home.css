@@ -763,6 +763,7 @@ ul li a:visited {
 }
     .footer-section {
         margin-top: 20%;
+        
     }
 
 
@@ -784,6 +785,9 @@ ul li a:visited {
     line-height: 1.6;
 }
 
+    .footer-middle {
+        margin-right: 30px;
+    }
 .footer-middle h3,
 .footer-right h3 {
     font-size: 14px;
@@ -804,13 +808,16 @@ ul li a:visited {
     margin-bottom: 5px;
 }
 
-
+.footer-middle a, .footer-right a {
+    font-size: 14px;
+}
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
     font-size: 12px;
     border-top: 1px solid #000;
     padding-top: 10px;
+    margin-right: 28px;
 }
 
 

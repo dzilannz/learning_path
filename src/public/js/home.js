@@ -181,9 +181,12 @@ function toggleDropdown() {
 document.addEventListener("click", function (event) {
     const navMenu = document.getElementById("nav-links");
     const hamburger = document.querySelector(".hamburger-menu");
+    const navContainer = document.querySelector(".navbar-right");
 
     if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
-        console.log("Klik di luar menu, tapi tidak menghapus class 'show'");
+        console.log("Klik di luar menu, menghapus class 'show'");
+        // Remove 'show' class to hide the menu
+        navContainer.classList.remove("show");
     }
 });
 

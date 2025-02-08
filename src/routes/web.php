@@ -67,15 +67,6 @@ Route::middleware([\App\Http\Middleware\AuthMiddleware::class . ':admin'])->grou
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Cek session di halaman test
-Route::get('/test', function () {
-    return view('test');
-})->name('test');
-
-Route::post('/custom-login', [CustomLoginController::class, 'loginAndFetchProfile'])
-    ->middleware(CustomAuthMiddleware::class);
-
-Route::get('/landing/{angkatan?}', [LandingPageController::class, 'index'])->name('landing');
 
 
 
