@@ -55,6 +55,7 @@ class NimAutomationScheduler
         \DB::table('nims')->where('angkatan', '<', $tahunBatas)->delete();
     }
 
+    // Update semester data
     protected function updateSemesterData()
     {
         $currentMonth = date('n'); // Bulan saat ini (1-12)
