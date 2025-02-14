@@ -268,7 +268,7 @@ class DashboardController extends Controller
             'munaqasyah' => 'Tugas Akhir dan Seminar',
         ];
         
-        // Default status sidang
+        // Data untuk section sidang
         $sidangStatus = [
             'seminar_kp' => false,
             'sempro' => false,
