@@ -156,41 +156,51 @@ class LandingPageController extends Controller
             'tahfidz' => 'Tahfidz',
         ];
 
-        // **Keseluruhan Ibtitah (satu kategori saja cukup untuk dihitung)**
+        
         $keseluruhanIbtitah = DB::table('statistics')
             ->where('name', 'ibtitah_count')
             ->value('value') ?? 0;
 
-        // **Keseluruhan Ibtitah per angkatan**
         $keseluruhanIbtitahPerAngkatan = DB::table('ibtitah')
-            ->join('nims', 'ibtitah.nim', '=', 'nims.nim')
+            ->join('nims', 'ibtitah.nim', '=', 'nims.nim') // Join once with the nims table
             ->where('ibtitah.status', 'approved')
-            ->select('nims.angkatan', DB::raw('COUNT(DISTINCT ibtitah.nim) as jumlah'))
-            ->groupBy('nims.angkatan')
-            ->orderBy('nims.angkatan', 'asc')
-            ->get();
+            ->where('nims.status', 'aktif')
+            ->where('nims.angkatan', $angkatan)
+            ->whereIn('ibtitah.kategori', ['tilawah', 'ibadah', 'tahfidz'])
+            ->select(DB::raw('COUNT(DISTINCT nims.nim) as total_mahasiswa')) // Counting distinct nim from nims table
+            ->havingRaw('COUNT(DISTINCT ibtitah.kategori) = 3') // Ensure student has all 3 categories
+            ->first(); // Get the result directly
+        
+
+
+
 
         // **Ibtitah per kategori**
         $ibtitahPerKategori = [];
-        foreach ($categories as $kategori => $namaMk) {
-            $ibtitahPerKategori[$kategori] = DB::table('ibtitah')
-                ->where('kategori', $kategori)
-                ->where('status', 'approved')
-                ->count();
-        }
+            foreach ($categories as $kategori => $namaMk) {
+                $ibtitahPerKategori[$kategori] = DB::table('ibtitah')
+                    ->join('nims', 'ibtitah.nim', '=', 'nims.nim') // Join nims table to check student status
+                    ->where('ibtitah.kategori', $kategori)
+                    ->where('ibtitah.status', 'approved')
+                    ->where('nims.status', 'aktif') // Ensure the student is active
+                    ->count();
+            }
+
 
         // **Ibtitah per kategori per angkatan**
         $ibtitahPerKategoriPerAngkatan = [];
         foreach ($categories as $kategori => $namaMk) {
             $ibtitahPerKategoriPerAngkatan[$kategori] = DB::table('ibtitah')
-                ->join('nims', 'ibtitah.nim', '=', 'nims.nim')
-                ->where('ibtitah.kategori', $kategori)
-                ->where('ibtitah.status', 'approved')
-                ->select('nims.angkatan', DB::raw('COUNT(ibtitah.nim) as jumlah'))
-                ->groupBy('nims.angkatan')
-                ->orderBy('nims.angkatan', 'asc')
+                ->join('nims', 'ibtitah.nim', '=', 'nims.nim') // Join with nims table to check student status
+                ->where('ibtitah.kategori', $kategori) // Filter by category
+                ->where('ibtitah.status', 'approved') // Ensure the record is approved
+                ->where('nims.status', 'aktif') // Ensure the student is active
+                ->select('nims.angkatan', DB::raw('COUNT(DISTINCT ibtitah.nim) as jumlah')) // Count distinct students
+                ->groupBy('nims.angkatan') // Group by intake year (angkatan)
+                ->orderBy('nims.angkatan', 'asc') // Order by intake year
                 ->get();
         }
+        
 
         // Log hasil untuk debugging
         Log::info('LandingPageController: Data Ibtitah berhasil dihitung.', [
@@ -391,7 +401,7 @@ class LandingPageController extends Controller
             'kerjaPraktikPerAngkatan' => $kerjaPraktikPerAngkatan,
             'keseluruhanIbtitah' => $keseluruhanIbtitah,
             'ibtitahPerKategori' => $ibtitahPerKategori,
-            'keseluruhanIbtitahPerAngkatan' => $keseluruhanIbtitahPerAngkatan,
+            'keseluruhanIbtitahPerAngkatan' => $keseluruhanIbtitahPerAngkatan ?? collect(),
             'ibtitahPerKategoriPerAngkatan' => $ibtitahPerKategoriPerAngkatan,
             'totalSidang' => $totalSidang,
             'sidangPerKategori' => $sidangPerKategori,

@@ -10,7 +10,7 @@
         <h3>Welcome!</h3>
         <form action="{{ route('login') }}" method="POST">
         @csrf
-            <input type="text" name="identifier" placeholder="NIM/NIP">
+            <input type="text" name="identifier" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
         </form>

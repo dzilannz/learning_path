@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class CalculateSidangCount implements ShouldQueue
+class CalculateSidangCountNew implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
