@@ -112,7 +112,7 @@ class AdminController extends Controller
         }
     }
 
-
+    // Upload file by admin
     public function uploadFile(Request $request)
     {
         $request->validate([
