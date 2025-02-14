@@ -80,7 +80,7 @@ class NimAutomationScheduler
         $this->updateNimMatkul($currentSemId);
     }
     
-
+// Validasi mahasiswa aktif per semester sekarang
     protected function validateActiveStudents($currentSemId)
     {
         $nims = \DB::table('nims')->get(); // Ambil semua NIM dari database
