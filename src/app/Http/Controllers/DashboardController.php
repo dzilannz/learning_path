@@ -87,7 +87,8 @@ class DashboardController extends Controller
             return back()->withErrors(['error' => 'Terjadi kesalahan saat menghubungi server.']);
         }
 
-       // Sync Semester Data
+       // Sync Semester Data 
+       // Data untuk section kuliah
         try {
             $semesterMapping = [];
             $semesterNames = [];
