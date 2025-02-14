@@ -52,7 +52,7 @@ class DashboardController extends Controller
                 $mahasiswa['nim'] = $nim;
             }
 
-            // **Panggil fungsi syncMahasiswaData di sini**
+            // Memanggil fungsi syncMahasiswaData di sini
             $this->syncMahasiswaData($mahasiswa);
             
             Log::info('syncMahasiswaData function called successfully.');
@@ -87,7 +87,6 @@ class DashboardController extends Controller
             return back()->withErrors(['error' => 'Terjadi kesalahan saat menghubungi server.']);
         }
 
-        // Sync Semester Data
        // Sync Semester Data
         try {
             $semesterMapping = [];
