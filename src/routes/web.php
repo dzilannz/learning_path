@@ -5,7 +5,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IbtitahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AdminViewController;
 use App\Http\Controllers\SearchAdminController;
@@ -72,8 +71,6 @@ Route::get('/test', function () {
     return view('test');
 })->name('test');
 
-Route::post('/custom-login', [CustomLoginController::class, 'loginAndFetchProfile'])
-    ->middleware(CustomAuthMiddleware::class);
 
 Route::get('/landing/{angkatan?}', [LandingPageController::class, 'index'])->name('landing');
 
