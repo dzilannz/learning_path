@@ -384,7 +384,6 @@ class DashboardController extends Controller
 
      /**
      * Sinkronisasi data mahasiswa ke tabel lokal.
-     *
      * @param array $mahasiswa
      */
     private function syncMahasiswaData(array $mahasiswa)
