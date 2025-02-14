@@ -56,7 +56,7 @@ class AdminController extends Controller
 
 
 
-    // Approve file
+    // Approve file by admin
     public function approve($id)
     {
         try {
