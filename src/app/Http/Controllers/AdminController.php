@@ -179,7 +179,8 @@ class AdminController extends Controller
     $submittedFiles = SubmittedFile::paginate(10); // Data paginasi
     return view('admin.profile', compact('submittedFiles'));
     }
-
+    
+// Search mahasiswa
     public function search(Request $request)
     {
         $nim = $request->get('nim');
