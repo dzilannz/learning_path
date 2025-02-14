@@ -104,7 +104,8 @@ class LandingPageController extends Controller
         Log::info('LandingPageController: Job CalculateIbtitahCount telah dikirim ke queue.');
     
         Log::info('LandingPageController: Semua NIM telah dikirim ke queue untuk diproses.');
-    
+
+    // Menghitung data yang ditampilkan ke landingpage
         $aktifPerAngkatan = DB::table('nims')
         ->select('angkatan', DB::raw('COUNT(*) as jumlah_aktif'))
         ->where('status', 'aktif')
