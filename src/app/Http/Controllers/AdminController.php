@@ -94,7 +94,7 @@ class AdminController extends Controller
         }
     }
 
-    // Hapus file
+    // Delete file
     public function delete($id)
     {
         try {
