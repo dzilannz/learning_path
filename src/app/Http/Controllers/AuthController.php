@@ -25,7 +25,7 @@ class AuthController extends Controller
         Log::info('API URL Mahasiswa:', ['url' => $urlMahasiswa]);
 
         try {
-            // Melakukan login via API untuk mahasiswa
+            // Melakukan login API untuk mahasiswa
             $responseMahasiswa = Http::withHeaders([
                 'Authorization' => 'Bearer ' . env('API_TOKEN'), // Sertakan token dari .env
                 'Content-Type' => 'application/json', // Tambahkan jika API memerlukan header ini

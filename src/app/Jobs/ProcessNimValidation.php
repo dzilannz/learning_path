@@ -35,6 +35,7 @@ class ProcessNimValidation implements ShouldQueue
      *
      * @return void
      */
+    // Menghitung mahasiswa aktif
     public function handle()
     {
         try {

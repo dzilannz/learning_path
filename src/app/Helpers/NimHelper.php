@@ -35,6 +35,7 @@ class NimHelper
                 }
     
                 // Log setiap tahun yang dihasilkan
+                // Generate NIM
                 Log::info('NimHelper: Daftar NIM berhasil dihasilkan untuk tahun.', [
                     'tahun' => $tahun,
                     'total_nim' => count($daftarNim),

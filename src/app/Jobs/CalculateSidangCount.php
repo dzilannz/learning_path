@@ -14,9 +14,7 @@ class CalculateSidangCount implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    /**
-     * Execute the job.
-     */
+    
     public function handle()
     {
         try {

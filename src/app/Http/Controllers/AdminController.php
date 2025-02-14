@@ -18,8 +18,8 @@ class AdminController extends Controller
     {
         try {
             // Default sort is by the most recent submission date
-            $statusFilter = $request->get('status', 'all'); // 'pending', 'approved', or 'all'
-            $nimSearch = $request->get('nim', ''); // Get the 'nim' search value
+            $statusFilter = $request->get('status', 'all');
+            $nimSearch = $request->get('nim', ''); 
     
             $query = DB::table('ibtitah')
                 ->whereNotNull('file_path')
@@ -56,7 +56,7 @@ class AdminController extends Controller
 
 
 
-    // Approve file
+    // Approve file by admin
     public function approve($id)
     {
         try {
@@ -76,7 +76,7 @@ class AdminController extends Controller
         }
     }
 
-    // Reject file
+    // Reject file by admin
     public function reject($id)
     {
         try {
@@ -94,7 +94,7 @@ class AdminController extends Controller
         }
     }
 
-    // Hapus file
+    // Delete file
     public function delete($id)
     {
         try {
@@ -112,7 +112,7 @@ class AdminController extends Controller
         }
     }
 
-
+    // Upload file by admin
     public function uploadFile(Request $request)
     {
         $request->validate([
@@ -179,7 +179,8 @@ class AdminController extends Controller
     $submittedFiles = SubmittedFile::paginate(10); // Data paginasi
     return view('admin.profile', compact('submittedFiles'));
     }
-
+    
+// Search mahasiswa
     public function search(Request $request)
     {
         $nim = $request->get('nim');

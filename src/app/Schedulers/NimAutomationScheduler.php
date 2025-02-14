@@ -48,13 +48,14 @@ class NimAutomationScheduler
             \DB::table('nims')->insertOrIgnore(['nim' => $nim, 'angkatan' => $tahunBaru]);
         }
     }
-
+// Menghapus nim lama
     protected function deleteOldNim()
     {
         $tahunBatas = date('Y') - 8;
         \DB::table('nims')->where('angkatan', '<', $tahunBatas)->delete();
     }
 
+    // Update semester data
     protected function updateSemesterData()
     {
         $currentMonth = date('n'); // Bulan saat ini (1-12)
@@ -79,7 +80,7 @@ class NimAutomationScheduler
         $this->updateNimMatkul($currentSemId);
     }
     
-
+// Validasi mahasiswa aktif per semester sekarang
     protected function validateActiveStudents($currentSemId)
     {
         $nims = \DB::table('nims')->get(); // Ambil semua NIM dari database
