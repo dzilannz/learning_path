@@ -172,9 +172,6 @@ class LandingPageController extends Controller
             ->first(); // Get the result directly
         
 
-
-
-
         // **Ibtitah per kategori**
         $ibtitahPerKategori = [];
             foreach ($categories as $kategori => $namaMk) {
@@ -185,7 +182,6 @@ class LandingPageController extends Controller
                     ->where('nims.status', 'aktif') // Ensure the student is active
                     ->count();
             }
-
 
         // **Ibtitah per kategori per angkatan**
         $ibtitahPerKategoriPerAngkatan = [];
@@ -201,7 +197,6 @@ class LandingPageController extends Controller
                 ->get();
         }
         
-
         // Log hasil untuk debugging
         Log::info('LandingPageController: Data Ibtitah berhasil dihitung.', [
             'keseluruhanIbtitah' => $keseluruhanIbtitah,
