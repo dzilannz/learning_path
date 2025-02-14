@@ -48,7 +48,7 @@ class NimAutomationScheduler
             \DB::table('nims')->insertOrIgnore(['nim' => $nim, 'angkatan' => $tahunBaru]);
         }
     }
-
+// Menghapus nim lama
     protected function deleteOldNim()
     {
         $tahunBatas = date('Y') - 8;
