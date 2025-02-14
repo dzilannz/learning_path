@@ -13,6 +13,7 @@ class SemesterHelper
         $tahun = date('Y'); // Tahun saat ini
         $bulan = date('n'); // Bulan saat ini (1–12)
 
+        // Menentukan semester yang aktif
         // Logika untuk menentukan semester
         if ($bulan >= 9 && $bulan <= 12) {
             // Semester ganjil: September - Desember
