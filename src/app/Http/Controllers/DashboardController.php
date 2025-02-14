@@ -170,7 +170,7 @@ class DashboardController extends Controller
         }
 
 
-
+        // Data untuk section ibtitah
         $categories = [
             'tilawah' => 'Praktek Tilawah',
             'ibadah' => 'Praktek Ibadah',
