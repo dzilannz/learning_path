@@ -18,8 +18,8 @@ class AdminController extends Controller
     {
         try {
             // Default sort is by the most recent submission date
-            $statusFilter = $request->get('status', 'all'); // 'pending', 'approved', or 'all'
-            $nimSearch = $request->get('nim', ''); // Get the 'nim' search value
+            $statusFilter = $request->get('status', 'all');
+            $nimSearch = $request->get('nim', ''); 
     
             $query = DB::table('ibtitah')
                 ->whereNotNull('file_path')
