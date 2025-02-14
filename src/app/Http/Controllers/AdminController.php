@@ -76,7 +76,7 @@ class AdminController extends Controller
         }
     }
 
-    // Reject file
+    // Reject file by admin
     public function reject($id)
     {
         try {
