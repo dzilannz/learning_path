@@ -14,9 +14,7 @@ class CalculateKPCount implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    /**
-     * Create a new job instance.
-     */
+    
     public function __construct()
     {
         // You can add any necessary parameters to the constructor
