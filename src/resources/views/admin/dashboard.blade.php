@@ -16,7 +16,7 @@
             <img src="{{ asset('img/logo.png') }}" alt="Logo">
             <span class="menu-text">
                 <span class="line1">Student</span>
-                <span class="line2">LearningPath</span>
+                <span class="line2">AcademicTracking</span>
             </span>
             <button id="sidebarToggle" class="sidebar-toggle">
                 <i class="fa fa-bars"></i>
@@ -91,7 +91,7 @@
     </div>
 
     <div class="footer">
-        &copy;Student LearningPath. All rights reserved.
+        &copy;Student Academic Tracking. All rights reserved.
     </div>
 
     <script>

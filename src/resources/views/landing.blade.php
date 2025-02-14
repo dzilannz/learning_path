@@ -33,7 +33,7 @@
     <header class="header">
         <div class="header-content">
             <h1 class="title">
-                Student<br>Learning Path
+                Student<br>Academic Tracking
             </h1>
             <p class="subtitle">Lihat perjalanan akademikmu dengan mudah!</p>
             <button class="btn" onclick="scrollToSection()">View More</button>
