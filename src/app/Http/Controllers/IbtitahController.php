@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class IbtitahController extends Controller
 {
+    // Upload file ibtitah mahasiswa
     public function submitProof(Request $request)
     {
         // Log akses ke fungsi

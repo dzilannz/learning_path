@@ -52,7 +52,7 @@ class DashboardController extends Controller
                 $mahasiswa['nim'] = $nim;
             }
 
-            // **Panggil fungsi syncMahasiswaData di sini**
+            // Memanggil fungsi syncMahasiswaData di sini
             $this->syncMahasiswaData($mahasiswa);
             
             Log::info('syncMahasiswaData function called successfully.');
@@ -87,8 +87,8 @@ class DashboardController extends Controller
             return back()->withErrors(['error' => 'Terjadi kesalahan saat menghubungi server.']);
         }
 
-        // Sync Semester Data
-       // Sync Semester Data
+       // Sync Semester Data 
+       // Data untuk section kuliah
         try {
             $semesterMapping = [];
             $semesterNames = [];
@@ -170,7 +170,7 @@ class DashboardController extends Controller
         }
 
 
-
+        // Data untuk section ibtitah
         $categories = [
             'tilawah' => 'Praktek Tilawah',
             'ibadah' => 'Praktek Ibadah',
@@ -268,7 +268,7 @@ class DashboardController extends Controller
             'munaqasyah' => 'Tugas Akhir dan Seminar',
         ];
         
-        // Default status sidang
+        // Data untuk section sidang
         $sidangStatus = [
             'seminar_kp' => false,
             'sempro' => false,
@@ -384,7 +384,6 @@ class DashboardController extends Controller
 
      /**
      * Sinkronisasi data mahasiswa ke tabel lokal.
-     *
      * @param array $mahasiswa
      */
     private function syncMahasiswaData(array $mahasiswa)
@@ -418,7 +417,3 @@ class DashboardController extends Controller
     }
     
 }
-
-
-   
-

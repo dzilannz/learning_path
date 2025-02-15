@@ -14,9 +14,7 @@ class CalculateIbtitahCount implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    /**
-     * Create a new job instance.
-     */
+   
     public function __construct()
     {
         //

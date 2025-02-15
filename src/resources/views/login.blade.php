@@ -4,13 +4,13 @@
 <div class="login-container">
     <div class="login-left">
         <img src="{{ asset('img/logo.png') }}" alt="Logo">
-        <h2>Student <br>Learning Path</h2>
+        <h2>Student <br>Academic Tracking</h2>
     </div>
     <div class="login-right">
         <h3>Welcome!</h3>
         <form action="{{ route('login') }}" method="POST">
         @csrf
-            <input type="text" name="identifier" placeholder="NIM/NIP">
+            <input type="text" name="identifier" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
         </form>

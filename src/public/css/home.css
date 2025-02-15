@@ -135,7 +135,7 @@ body {
 }
 
 .title {
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 700;
     color: #FFFFFF;
     line-height: 1;
@@ -654,7 +654,7 @@ ul li a:visited {
 }
 
 .subtitle {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .btn {
@@ -819,6 +819,4 @@ ul li a:visited {
     padding-top: 10px;
     margin-right: 28px;
 }
-
-
 }
