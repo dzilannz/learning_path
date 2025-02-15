@@ -117,7 +117,6 @@
                     <button type="submit">Submit</button>
                 </form>
 
-                 <!-- Riwayat Upload -->
                 <!-- Riwayat Upload -->
                 @foreach (['tilawah', 'ibadah', 'tahfidz'] as $kategori)
                     @php
@@ -152,7 +151,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy;Student LearningPath. All rights reserved.</p>
+        <p>&copy;Student Academic Tracking. All rights reserved.</p>
     </div>
 </body>
 </html>

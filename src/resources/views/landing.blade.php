@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Learning Path</title>
+    <title>Student Academic Tracking</title>
     <link rel="stylesheet" href="/css/home.css">
     <script src="{{ asset('js/home.js') }}" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
     <header class="header">
         <div class="header-content">
             <h1 class="title">
-                Student<br>Learning Path
+                Student<br>Academic Tracking
             </h1>
             <p class="subtitle">Lihat perjalanan akademikmu dengan mudah!</p>
             <button class="btn" onclick="scrollToSection()">View More</button>
