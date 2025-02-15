@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \URL::forceRootUrl(config('app.url'));
+           
+        // Optional: Force HTTPS if you're using SSL
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }

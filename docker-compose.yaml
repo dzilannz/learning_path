@@ -1,20 +1,22 @@
 version: '3.8'
 
 services:
-  # Web Server Service
+  # Web Server Service (Nginx)
   nginx:
     image: nginx:alpine
     container_name: nginx1
     ports:
-      - "8080:80"
+      - "443:443"  # Menangani HTTPS (port 443)
+      - "8080:80"    # Hanya untuk mengalihkan HTTP ke HTTPS (port 80)
     depends_on:
       - app
       - db
     volumes:
       - ./src:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./src/storage:/var/www/storage
 
-  # Database Service
+  # Database Service (PostgreSQL)
   db:
     image: postgres
     container_name: pgsql
@@ -23,29 +25,51 @@ services:
     ports:
       - "5432:5432"
     environment: 
-      POSTGRES_DB: pgsql
-      POSTGRES_USER: root 
-      POSTGRES_PASSWORD: password 
+      POSTGRES_DB: db_academictracking
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
 
+  # PgAdmin Service for PostgreSQL management
   pgadmin:
-      image: dpage/pgadmin4
-      container_name: pgAdmin1
-      ports:
-        - "5050:80"
-      depends_on:
-        - db 
-      environment:
-        PGADMIN_DEFAULT_EMAIL: 123@gmail.com
-        PGADMIN_DEFAULT_PASSWORD: password 
+    image: dpage/pgadmin4
+    container_name: pgAdmin1
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: academictracking@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
 
-  # Application Service
+  # Application Service (PHP)
   app:
     container_name: tes1
-    build: 
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "9000:9000"
+    working_dir: /var/www/html
+    environment:
+      APP_ENV: production
+      APP_DEBUG: false
+      APP_URL: https://academictracking.informatika.digital
+    command: ["php-fpm"]
+
+  # Queue Worker Service
+  queue-worker:
+    container_name: queue-worker1
+    build:
       context: ./php
       dockerfile: Dockerfile
     volumes:
       - ./src:/var/www
-    ports:
-      - "9000:9000"
-    working_dir: /var/www
+    command: ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+    depends_on:
+      - app
+    environment:
+      QUEUE_CONNECTION: database
+      APP_ENV: production
+      APP_DEBUG: false
