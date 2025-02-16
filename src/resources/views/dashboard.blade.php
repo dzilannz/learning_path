@@ -134,6 +134,7 @@
                             @endif
                         </p>
                         <p><strong>Status:</strong> {{ ucfirst($history->status ?? 'Belum tersedia') }}</p>
+                        <p><strong>Approved:</strong> {{ $history->approved_at ?? 'Tidak tersedia' }}</p>
                     </div>
                 @endforeach
             </div>
