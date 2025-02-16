@@ -76,6 +76,7 @@
                     <th class="desktop-only">Upload</th>
                     <th class="desktop-only">Upload by Admin</th>
                     <th class="desktop-only">Status</th>
+                    <th class="desktop-only">Approved</th>
                     <th class="desktop-only">Aksi</th>
                     <th class="desktop-hide">Detail</th> <!-- Tambahkan kolom Detail -->
                 </tr>
@@ -90,6 +91,7 @@
                     <td class="desktop-only">{{ $file->submitted_at }}</td>
                     <td class="desktop-only">{{ $file->file_diupload_admin }}</td>
                     <td class="desktop-only">{{ ucfirst($file->status) }}</td>
+                     <td class="desktop-only">{{ $file->approved_at }}</td>
                     <td class="desktop-only">
                         @if ($file->status === 'approved')
                             <button class="btn btn-done" disabled>Done</button>
@@ -115,12 +117,13 @@
                         <button class="toggle-details" onclick="toggleDetails(this)">Detail</button> <!-- Tombol Detail hanya di Mobile -->
                     </td>
                 <tr class="details-row">
-                    <td colspan="9">
+                    <td colspan="10">
                         <div class="details-content">
                             <p><strong>File:</strong> <a href="{{ asset('storage/' . $file->file_path) }}" target="_blank">View File</a></p>
                             <p><strong>Upload:</strong> {{ $file->submitted_at }}</p>
                             <p><strong>Upload by Admin:</strong> {{ $file->file_diupload_admin }}</p>
                             <p><strong>Status:</strong> {{ ucfirst($file->status) }}</p>
+                            <p><strong>Approved:</strong> {{ $file->approved_at }}</p>
 
                             <!-- Tambahkan tombol aksi di dalam details-content untuk tampilan mobile -->
                             <div class="mobile-actions">
